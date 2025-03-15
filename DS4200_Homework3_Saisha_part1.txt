@@ -1,0 +1,28 @@
+DS4200 Homework 3 Submission - Saisha Ketkar
+
+GitHub Repository Link:
+https://github.com/saisha12345/DS4200-Homework3_Saisha  
+
+GitHub Pages Website Link:
+https://saisha12345.github.io/DS4200-Homework3_Saisha/ 
+
+Styling & Customizations:
+1. The fonts and colors used:
+   - I used the poppins font to achieve a modern website look.
+   - Custom pink and yellow theme for the About page.
+   - Dark gray theme for the navigation bar.
+
+2. Layout and navigation for the page:
+   - I created a navigation bar for easy page transitions.
+   - made a dynamic tabs section for the About page.
+
+3. Interactivity for the page:
+   - I Implemented JavaScript-based tab switching.
+   - Added a contact link in About page.
+
+4. Images used for presentation:
+   - Profile image (`profile.jpg`) added to homepage.
+   - Taekwondo image (`tkd.jpg`) added to About page.
+   - Rounded image borders and also added subtle shadow effects.
+   - made a Clean and responsive layout for mobile and desktop.
+
