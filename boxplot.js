@@ -1,5 +1,5 @@
 // Load the CSV file
-d3.csv("social_media_data.csv").then(function(data) {
+d3.csv("socialMedia.csv").then(function(data)  {
     
     // Convert Likes to numeric values
     data.forEach(d => {
