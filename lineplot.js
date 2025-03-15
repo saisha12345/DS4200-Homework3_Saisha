@@ -19,7 +19,7 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
                      .padding(0.1);
 
     const yScale = d3.scaleLinear()
-                     .domain([400, d3.max(data, d => d.AvgLikes)])  // Adjusted min to 400 for better visualization
+                     .domain([d3.min(data, d => d.AvgLikes) - 10, d3.max(data, d => d.AvgLikes) + 10]) // Adjust min/max for spacing
                      .range([height - margin.bottom, margin.top]);
 
     // Add X-axis
@@ -30,15 +30,6 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
        .style("text-anchor", "end")
        .attr("transform", "rotate(-25)");  // Rotate labels for readability
 
-    // Add X-axis label
-    svg.append("text")
-       .attr("text-anchor", "middle")
-       .attr("x", width / 2)
-       .attr("y", height - 40)
-       .style("font-size", "16px")
-       .style("font-weight", "bold")
-       .text("Date");
-
     // Add Y-axis
     svg.append("g")
        .attr("transform", `translate(${margin.left}, 0)`)
@@ -46,19 +37,18 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
 
     // Add Y-axis label
     svg.append("text")
-       .attr("transform", "rotate(-90)")
-       .attr("x", -height / 2)
-       .attr("y", margin.left / 3)
-       .attr("text-anchor", "middle")
+       .attr("transform", "rotate(-90)")  // Rotate vertically
+       .attr("x", 0 - height / 2)  
+       .attr("y", margin.left / 4) 
+       .style("text-anchor", "middle")
        .style("font-size", "16px")
-       .style("font-weight", "bold")
-       .text("Average Likes");
+       .text("Average Number of Likes"); // Y-axis label text
 
-    // Create the line generator with curveNatural
+    // Line generator with curveNatural
     const line = d3.line()
-        .x(d => xScale(d.Date) + xScale.bandwidth() / 2) // Center the line in the band
+        .x(d => xScale(d.Date) + xScale.bandwidth() / 2)  // Center points in the band
         .y(d => yScale(d.AvgLikes))
-        .curve(d3.curveNatural);  // Ensuring smooth curve
+        .curve(d3.curveNatural);
 
     // Draw the line
     svg.append("path")
@@ -67,16 +57,4 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
        .attr("stroke", "steelblue")
        .attr("stroke-width", 2)
        .attr("d", line);
-
-    // Add dots for each data point
-    svg.selectAll("circle")
-       .data(data)
-       .enter()
-       .append("circle")
-       .attr("cx", d => xScale(d.Date) + xScale.bandwidth() / 2)
-       .attr("cy", d => yScale(d.AvgLikes))
-       .attr("r", 5)
-       .attr("fill", "red")
-       .attr("stroke", "black");
-
 });
