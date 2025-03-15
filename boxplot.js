@@ -27,14 +27,12 @@ d3.csv("socialMedia.csv").then(function(data) {
        .style("font-size", "14px")
        .attr("dy", "0.5em");
 
-    // Add Y-axis
     svg.append("g")
        .attr("transform", `translate(${margin.left}, 0)`)
        .call(d3.axisLeft(yScale))
        .selectAll("text")
        .style("font-size", "14px");
 
-    // Add Y-axis label
     svg.append("text")
        .attr("text-anchor", "middle")
        .attr("transform", `translate(${margin.left - 50}, ${height / 2}) rotate(-90)`)
@@ -42,7 +40,6 @@ d3.csv("socialMedia.csv").then(function(data) {
        .style("font-weight", "bold")
        .text("Number of Likes");
 
-    // Add X-axis label
     svg.append("text")
        .attr("text-anchor", "middle")
        .attr("x", width / 2)
@@ -51,7 +48,6 @@ d3.csv("socialMedia.csv").then(function(data) {
        .style("font-weight", "bold")
        .text("Social Media Platform");
 
-    // Add Title
     svg.append("text")
        .attr("x", width / 2)
        .attr("y", margin.top - 20)
