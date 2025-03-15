@@ -1,22 +1,17 @@
-// Load the CSV file
 d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
     
-    // Convert Likes to numeric values
     data.forEach(d => {
-        d.AvgLikes = +d.AvgLikes;  // Convert AvgLikes column to numbers
+        d.AvgLikes = +d.AvgLikes;  
     });
 
-    // Set up SVG canvas
-    const width = 800, height = 500, margin = { top: 50, right: 180, bottom: 50, left: 60 };  // Increased right margin
+    const width = 800, height = 500, margin = { top: 50, right: 180, bottom: 50, left: 60 };  
     const svg = d3.select("#barplot")
                   .attr("width", width)
                   .attr("height", height);
 
-    // Extract unique platforms and post types
     const platforms = Array.from(new Set(data.map(d => d.Platform)));
     const postTypes = Array.from(new Set(data.map(d => d.PostType)));
 
-    // Set up scales
     const x0 = d3.scaleBand()
                  .domain(platforms)
                  .range([margin.left, width - margin.right])
@@ -34,9 +29,8 @@ d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
 
     const colorScale = d3.scaleOrdinal()
                          .domain(postTypes)
-                         .range(["#1f77b4", "#ff7f0e", "#2ca02c"]); // Improved color scheme
+                         .range(["#1f77b4", "#ff7f0e", "#2ca02c"]); 
 
-    // Add X-axis
     svg.append("g")
        .attr("transform", `translate(0, ${height - margin.bottom})`)
        .call(d3.axisBottom(x0))
@@ -48,7 +42,6 @@ d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
        .style("font-size", "14px")
        .text("Social Media Platform");
 
-    // Add Y-axis
     svg.append("g")
        .attr("transform", `translate(${margin.left}, 0)`)
        .call(d3.axisLeft(y))
@@ -64,7 +57,6 @@ d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
     // Group the data for each platform
     const groupedData = d3.group(data, d => d.Platform);
 
-    // Add bars
     svg.selectAll(".platform-group")
        .data(groupedData)
        .enter()
@@ -80,7 +72,6 @@ d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
        .attr("height", d => height - margin.bottom - y(d.AvgLikes))
        .attr("fill", d => colorScale(d.PostType));
 
-    // Add Legend (Moved to top-right)
     const legend = svg.append("g")
                       .attr("transform", `translate(${width - 140}, ${margin.top - 20})`);
 
