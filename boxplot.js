@@ -1,5 +1,5 @@
 // Load the CSV file
-d3.csv("socialMedia.csv").then(function(data)  {
+d3.csv("socialMedia.csv").then(function(data) {
     
     // Convert Likes to numeric values
     data.forEach(d => {
@@ -7,7 +7,7 @@ d3.csv("socialMedia.csv").then(function(data)  {
     });
 
     // Set up SVG canvas
-    const width = 800, height = 500, margin = { top: 50, right: 30, bottom: 50, left: 50 };
+    const width = 900, height = 550, margin = { top: 60, right: 50, bottom: 60, left: 70 };
     const svg = d3.select("#boxplot")
                   .attr("width", width)
                   .attr("height", height);
@@ -28,12 +28,43 @@ d3.csv("socialMedia.csv").then(function(data)  {
     // Add X-axis
     svg.append("g")
        .attr("transform", `translate(0, ${height - margin.bottom})`)
-       .call(d3.axisBottom(xScale));
+       .call(d3.axisBottom(xScale))
+       .selectAll("text")
+       .style("font-size", "14px")
+       .attr("dy", "0.5em");
 
     // Add Y-axis
     svg.append("g")
        .attr("transform", `translate(${margin.left}, 0)`)
-       .call(d3.axisLeft(yScale));
+       .call(d3.axisLeft(yScale))
+       .selectAll("text")
+       .style("font-size", "14px");
+
+    // Add Y-axis label
+    svg.append("text")
+       .attr("text-anchor", "middle")
+       .attr("transform", `translate(${margin.left - 50}, ${height / 2}) rotate(-90)`)
+       .style("font-size", "16px")
+       .style("font-weight", "bold")
+       .text("Number of Likes");
+
+    // Add X-axis label
+    svg.append("text")
+       .attr("text-anchor", "middle")
+       .attr("x", width / 2)
+       .attr("y", height - 20)
+       .style("font-size", "16px")
+       .style("font-weight", "bold")
+       .text("Social Media Platform");
+
+    // Add Title
+    svg.append("text")
+       .attr("x", width / 2)
+       .attr("y", margin.top - 20)
+       .attr("text-anchor", "middle")
+       .style("font-size", "22px")
+       .style("font-weight", "bold")
+       .text("Distribution of Likes Across Platforms");
 
     // Function to calculate quartiles
     function rollupFunction(values) {
@@ -69,7 +100,7 @@ d3.csv("socialMedia.csv").then(function(data)  {
            .attr("y", yScale(quartiles.q3))
            .attr("width", boxWidth)
            .attr("height", yScale(quartiles.q1) - yScale(quartiles.q3))
-           .attr("fill", "lightblue")
+           .attr("fill", "#ffcc80")  // Orange color
            .attr("stroke", "black");
 
         // Median Line
@@ -82,4 +113,3 @@ d3.csv("socialMedia.csv").then(function(data)  {
            .attr("stroke-width", 2);
     });
 });
-
