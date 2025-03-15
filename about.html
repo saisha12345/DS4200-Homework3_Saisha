@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>More About Me</title>
+    <title>More About Me</title>    
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="about-theme"> 
 
     <header>
         <h1>More About Me</h1>
@@ -14,22 +14,111 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li> 
             </ul>
-        </nav>
-    </header>
+        </nav>   
+    </header> 
+    
+    <section class="container">
+        <h2>My Interests</h2>
 
-    <section>
-        <h2>My Work and Interests</h2>
-        <p>I'm particularly interested in financial modeling and consulting. Some of my past projects include a stock pitch with a  buy recommendation for Clearway Energy and working on market analysis for a startup.</p>
-        <ul>
-            <li>Investment Banking</li>
-            <li>Consulting</li>
-            <li>Data Science</li>
-            <li>Technology</li>
-        </ul>
-        <img src="finance.jpg" alt="Finance and Consulting" width="400">
+        <div class="tabs">
+            <button class="tab-button active" onclick="showSection('taekwondo')">🥋 Taekwondo</button>
+            <button class="tab-button" onclick="showSection('coding')">💻 Coding</button>
+            <button class="tab-button" onclick="showSection('sustainability')">🌱 Sustainability</button>
+            <button class="tab-button" onclick="showSection('origami')">📜 Origami</button>
+            <button class="tab-button" onclick="showSection('crochet')">🧶 Crochet</button>
+        </div>
+
+     
+        <div id="taekwondo" class="tab-content active">
+            <h3>🥋 Taekwondo: My Martial Arts Journey</h3>
+            <p>
+                Taekwondo is a huge part of my life. It has taught me discipline, focus, and resilience. 
+                Training in this martial art has given me the confidence to push past limits, both physically and mentally.
+            </p>
+            <p>
+                I love competing in Taekwondo tournaments and pushing myself to improve. The feeling of executing 
+                a perfectly timed kick or breaking a board is exhilarating. Beyond the physical training, Taekwondo 
+                instills core values of **perseverance, self-control, and respect**. It's not just a sport, it's a way of life. FUN FACT ABOUT ME 
+I CAN DO A FULL SPLIT!!
+            </p>
+            <img src="tkd.jpg" alt="Taekwondo Kick" width="300">
+            <ul>
+                <li>Develops strength and flexibility</li>
+                <li>Teaches self-defense</li>
+             
+            </ul>
+        </div>
+
+        <div id="coding" class="tab-content">
+            <h3>💻 My Passion for Coding</h3>
+            <p>
+                I love programming because it allows me to solve real-world problems with logic and creativity.
+                I enjoy the challenge of coding.
+            </p>
+            <ul>
+                <li>Python for data science & automation</li>
+            </ul>
+        </div>
+
+
+        <div id="sustainability" class="tab-content">
+            <h3>🌱 My Interest in Sustainability</h3>
+            <p>
+                I believe in using technology to drive sustainability initiatives. 
+                From composting projects to smart waste management, I strive to make an impact.
+            </p>
+            <ul>
+                <li>Building a composting awareness platform</li>
+                <li>Exploring sustainable energy solutions</li>
+                <li>Advocating for green technology</li>
+            </ul>
+        </div>
+
+
+        <div id="origami" class="tab-content">
+            <h3>📜 Origami, The Art of Paper Folding</h3>
+            <p>
+                Origami has always fascinated me. The ability to transform a simple sheet of paper into 
+                an intricate, beautiful shape is magical. It requires patience, precision, and creativity.
+            </p>
+            <p>
+                I enjoy creating different origami models, from classic paper cranes to complex modular designs. 
+                It is both a relaxing hobby and a form of creative expression.
+            </p>
+            <ul>
+                <li>Improves concentration and patience</li>
+                <li>Enhances spatial reasoning and creativity</li>
+                <li>Brings joy through artistic paper creations</li>
+            </ul>
+        </div>
+
+
+        <div id="crochet" class="tab-content">
+            <h3>🧶 Crochet</h3>
+            <p>
+                Crochet is another hobby I deeply enjoy. There's something incredibly satisfying about 
+                taking a ball of yarn and transforming it into something useful and beautiful.
+            </p>
+
+            <ul>
+                <li>Relaxing and therapeutic</li>
+            
+            </ul>
+        </div>
     </section>
+
+    <section class="contact-link">
+        <h2>Want to Get in Touch?</h2>
+        <p>Feel free to <a href="index.html#contact">contact me</a> if you have any questions or just want to chat!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Saisha. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
-
