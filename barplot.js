@@ -7,7 +7,7 @@ d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
     });
 
     // Set up SVG canvas
-    const width = 800, height = 500, margin = { top: 50, right: 150, bottom: 50, left: 60 };
+    const width = 800, height = 500, margin = { top: 50, right: 180, bottom: 50, left: 60 };  // Increased right margin
     const svg = d3.select("#barplot")
                   .attr("width", width)
                   .attr("height", height);
@@ -80,9 +80,9 @@ d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
        .attr("height", d => height - margin.bottom - y(d.AvgLikes))
        .attr("fill", d => colorScale(d.PostType));
 
-    // Add Legend
+    // Add Legend (Moved to top-right)
     const legend = svg.append("g")
-                      .attr("transform", `translate(${width - margin.right + 20}, ${margin.top})`);
+                      .attr("transform", `translate(${width - 140}, ${margin.top - 20})`);
 
     postTypes.forEach((postType, i) => {
         legend.append("rect")
