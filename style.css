@@ -1,6 +1,6 @@
 
 .taekwondo-theme {
-    background-color: #FFD6E0; /* Soft Pink Background */
+    background-color: #FFD6E0; 
     color: #FFC107; 
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -8,7 +8,7 @@
 
 
 .taekwondo-theme header {
-    background-color: #FF69B4; /* Bright Pink Header */
+    background-color: #FF69B4; 
     color: white;
     padding: 20px;
     text-align: center;
@@ -16,7 +16,7 @@
     font-weight: bold;
 }
 
-/* Content Box */
+
 .content {
     max-width: 800px;
     margin: 50px auto;
@@ -26,7 +26,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Image Styling */
+
 img {
     display: block;
     margin: 20px auto;
