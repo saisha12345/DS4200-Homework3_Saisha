@@ -1,9 +1,12 @@
+// Load the CSV file
 d3.csv("Social_Media_Average_Likes_Data.csv").then(function(data) {
     
+    // Convert Likes to numeric values
     data.forEach(d => {
-        d.AvgLikes = +d.AvgLikes;  
+        d.AvgLikes = +d.AvgLikes;  // Convert AvgLikes column to numbers
     });
 
+    // Set up SVG canvas
     const width = 800, height = 500, margin = { top: 50, right: 150, bottom: 50, left: 60 };
     const svg = d3.select("#barplot")
                   .attr("width", width)
