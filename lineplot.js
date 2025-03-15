@@ -7,7 +7,7 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
     });
 
     // Set up SVG canvas
-    const width = 900, height = 500, margin = { top: 50, right: 50, bottom: 100, left: 70 };
+    const width = 900, height = 500, margin = { top: 50, right: 50, bottom: 100, left: 80 };
     const svg = d3.select("#lineplot")
                   .attr("width", width)
                   .attr("height", height);
@@ -30,16 +30,35 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
        .style("text-anchor", "end")
        .attr("transform", "rotate(-25)");  // Rotate labels for readability
 
+    // Add X-axis label
+    svg.append("text")
+       .attr("text-anchor", "middle")
+       .attr("x", width / 2)
+       .attr("y", height - 40)
+       .style("font-size", "16px")
+       .style("font-weight", "bold")
+       .text("Date");
+
     // Add Y-axis
     svg.append("g")
        .attr("transform", `translate(${margin.left}, 0)`)
        .call(d3.axisLeft(yScale));
 
-    // Line generator
+    // Add Y-axis label
+    svg.append("text")
+       .attr("transform", "rotate(-90)")
+       .attr("x", -height / 2)
+       .attr("y", margin.left / 3)
+       .attr("text-anchor", "middle")
+       .style("font-size", "16px")
+       .style("font-weight", "bold")
+       .text("Average Likes");
+
+    // Create the line generator with curveNatural
     const line = d3.line()
-                   .x(d => xScale(d.Date) + xScale.bandwidth() / 2)
-                   .y(d => yScale(d.AvgLikes))
-                   .curve(d3.curveNatural); // Smooth the curve
+        .x(d => xScale(d.Date) + xScale.bandwidth() / 2) // Center the line in the band
+        .y(d => yScale(d.AvgLikes))
+        .curve(d3.curveNatural);  // Ensuring smooth curve
 
     // Draw the line
     svg.append("path")
@@ -48,4 +67,15 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
        .attr("stroke", "steelblue")
        .attr("stroke-width", 2)
        .attr("d", line);
+
+    // Add dots for each data point
+    svg.selectAll("circle")
+       .data(data)
+       .enter()
+       .append("circle")
+       .attr("cx", d => xScale(d.Date) + xScale.bandwidth() / 2)
+       .attr("cy", d => yScale(d.AvgLikes))
+       .attr("r", 4)
+       .attr("fill", "red");
+
 });
