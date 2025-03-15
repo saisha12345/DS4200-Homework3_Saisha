@@ -19,7 +19,7 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
                      .padding(0.1);
 
     const yScale = d3.scaleLinear()
-                     .domain([0, d3.max(data, d => d.AvgLikes)])
+                     .domain([400, d3.max(data, d => d.AvgLikes)])  // Adjusted min to 400 for better visualization
                      .range([height - margin.bottom, margin.top]);
 
     // Add X-axis
@@ -75,7 +75,8 @@ d3.csv("SocialMediaTime.csv").then(function(data) {
        .append("circle")
        .attr("cx", d => xScale(d.Date) + xScale.bandwidth() / 2)
        .attr("cy", d => yScale(d.AvgLikes))
-       .attr("r", 4)
-       .attr("fill", "red");
+       .attr("r", 5)
+       .attr("fill", "red")
+       .attr("stroke", "black");
 
 });
